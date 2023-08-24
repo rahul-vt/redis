@@ -1,0 +1,37 @@
+set name zod -> set a key with a value
+get name -> get value associated to that key
+exists name -> check if key "name" exists
+keys * -> get all keys
+flushall -> clear everything
+clear / ctrl + l -> clear screen
+
+//expiration
+ttl name ->to check expiry
+	output: -1 -> means it has no expiration
+expire name 10 -> name will be expired in 10 seconds
+	now:  ttl name to see how much time left for expiry
+	output: -2  -> it means it has expired and no longer exists
+
+
+
+
+
+//arrays or list
+lpush friends john -> create an array named friends and add john at first
+	get friends won't work because it only works for string and friend is an array
+lrange friends 0 -1 -> to get all items from the list
+lpush friends jane -> add jane as first element of friends array
+rpush friends mike -> add mike as last element of friends array 
+LPOP friends -> removes first element from friends
+RPOP friends -> removes last element from firends
+
+
+//subscribing to a channel 
+SUBSCRIBE channel1 channel2 -> channel1 and channel2 are channel names
+or 
+PSUBSCRIBE *_channel *_chat -> it subscribes to all channels that ends with _channel and _chat
+
+
+//publishing to a channel
+PUBLISH channel1 "type a message" -> channel1 is the channel to publish the message
+
